@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
-
 export default function Home() {
   return (
     <>
@@ -12,8 +10,8 @@ export default function Home() {
           backgroundPosition: "center",
         }}
       >
-        <div className="container mx-auto text-center py-36">
-          <div className="bg-black bg-opacity-50 p-10 rounded-lg inline-block">
+        <div className="text-center flex justify-center items-center min-w-screen h-full">
+          <div className="bg-black bg-opacity-50 p-10 rounded-lg inline-block w-5/6">
             <h1 className="text-4xl font-bold text-white mb-4">
               Welcome to FarmToTable
             </h1>
@@ -49,7 +47,7 @@ export default function Home() {
               Buy fresh, organic fruits, vegetables, and grains directly from
               farmers at fair prices, supporting local agriculture.
             </p>
-            <button className="rounded bg-green-550 px-4 py-2 font-bold text-white hover:bg-green-555 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+            <button className="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
               <Link href="/buy">Buy Now</Link>
             </button>
           </div>
@@ -61,7 +59,7 @@ export default function Home() {
               Sell your fresh, organic produce directly to consumers at fair
               prices, promoting sustainability and community support.
             </p>
-            <button className="rounded bg-blue-550 px-4 py-2 font-bold text-white hover:bg-blue-550 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+            <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
               <Link href="/sell">Sell Now</Link>
             </button>
           </div>
@@ -76,7 +74,7 @@ export default function Home() {
               sustainable practices and achieve higher yields, ensuring a
               prosperous future for generations to come.
             </p>
-            <button className="rounded bg-yellow-550 px-4 py-2 font-bold text-white hover:bg-yellow-550 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50">
+            <button className="rounded bg-yellow-500 px-4 py-2 font-bold text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50">
               <Link href="/info">Acknowledge</Link>
             </button>
           </div>
@@ -91,8 +89,8 @@ export default function Home() {
               adverse conditions. Our innovative approach ensures your fields
               stay productive and resilient against unpredictable weather.
             </p>
-            <button className="rounded bg-red-550 px-4 py-2 font-bold text-white hover:bg-red-550 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
-              <Link href="/crop-safety"></Link>Discover How
+            <button className="rounded bg-orange-500 px-4 py-2 font-bold text-white hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-50">
+              <Link href="/crop_safety"></Link>Discover How
             </button>
           </div>
         </div>

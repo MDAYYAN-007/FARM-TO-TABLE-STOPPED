@@ -13,7 +13,7 @@ const buy = () => {
           <div class="bg-white shadow-lg rounded-lg overflow-hidden w-1/2">
             <div className="relative w-full h-48">
               <Image
-                src="/images/fruits.jpeg"
+                src="/images/fruits.jpg"
                 alt="Fruits"
                 layout="fill"
                 objectFit="cover"
@@ -63,7 +63,7 @@ const buy = () => {
           <div class="bg-white shadow-lg rounded-lg overflow-hidden w-1/2">
           <div className="relative w-full h-48">
               <Image
-                src="/images/image.png"
+                src="/images/grains.png"
                 alt="Fruits"
                 layout="fill"
                 objectFit="cover"
@@ -71,9 +71,9 @@ const buy = () => {
               />
             </div>
             <div class="p-6">
-              <h2 class="text-2xl font-semibold mb-2">Organic Grains</h2>
+              <h2 class="text-2xl font-semibold mb-2">Organic Grains, Pulses and Nuts</h2>
               <p class="text-gray-700 mb-4">
-                Find a selection of organic grains for all your culinary needs.
+                Find a selection of organic grains, pulses and nuts for all your culinary needs.
               </p>
               <a
                 href="/grains"
