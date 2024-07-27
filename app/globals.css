@@ -2,32 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.bg-green-550 {
+    background-color: rgb(0, 255, 0);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.hover\:bg-green-555:hover {
+    background-color: rgb(0, 204, 0); /* Darker green for hover effect */
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.bg-blue-550 {
+    background-color: rgb(0, 0, 255);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.hover\:bg-blue-550:hover {
+    background-color: rgb(0, 0, 204); /* Darker blue for hover effect */
 }
+
+.bg-red-550 {
+    background-color: rgb(255, 0, 0);
+}
+
+.hover\:bg-red-550:hover {
+    background-color: rgb(204, 0, 0); /* Darker red for hover effect */
+}
+
+.bg-yellow-550 {
+    background-color: rgb(255, 255, 17);
+}
+
+.hover\:bg-yellow-550:hover {
+    background-color: rgb(204, 204, 14); /* Darker yellow for hover effect */
+}
+
+.hover\:text-green-550:hover {
+    color: rgb(0, 255, 0); /* Adjust to the desired green */
+}
+
+.hover\:bg-green-550:hover {
+    background-color: rgb(0, 255, 0); /* Adjust to the desired green */
+}
+
+.min-h-84vh{
+    height: 84vh;
+}
+
