@@ -43,7 +43,6 @@ const Navbar = () => {
             </div>
           </div>
           <div className="relative group">
-            class="
             <button className="hover:text-green-700 focus:outline-none px-2">
               <FontAwesomeIcon className='text-3xl' icon={faUser} />
             </button>
