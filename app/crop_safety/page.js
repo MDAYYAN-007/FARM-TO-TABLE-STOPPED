@@ -53,7 +53,7 @@ const CropSafety = () => {
       >
         <div className="h-72 w-72 bg-gray-100 bg-opacity-30 border-2 border-gray-300 p-4 rounded-lg shadow-md backdrop-filter backdrop-blur-sm">
           <h2 className="text-lg text-center font-semibold mb-4">
-            Weather's Forecast
+            Weather Forecast
           </h2>
           <form
             onSubmit={handleSubmit(onSubmit)}
