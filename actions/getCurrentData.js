@@ -3,7 +3,7 @@ import axios from "axios";
 const getCurrentData = async (cityName) => {
   try {
     const response = await axios.get(
-      `http://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API}&q=${cityName}&aqi=no`
+      `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API}&q=${cityName}&aqi=no`
     );
     return response.data;
   } catch (err) {
