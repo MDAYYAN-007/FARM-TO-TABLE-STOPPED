@@ -11,7 +11,7 @@ export default function Home() {
         }}
       >
         <div className="text-center flex justify-center items-center min-w-screen h-full">
-          <div className="bg-black bg-opacity-50 p-10 rounded-lg inline-block w-5/6">
+          <div className="bg-black bg-opacity-30 p-10 rounded-lg inline-block w-5/6">
             <h1 className="text-4xl font-bold text-white mb-4">
               Welcome to FarmToTable
             </h1>
@@ -47,7 +47,7 @@ export default function Home() {
               Buy fresh, organic fruits, vegetables, and grains directly from
               farmers at fair prices, supporting local agriculture.
             </p>
-            <button className="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+            <button className="rounded bg-green-550 px-4 py-2 font-bold text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
               <Link href="/buy">Buy Now</Link>
             </button>
           </div>

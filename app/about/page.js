@@ -1,6 +1,6 @@
 import React from 'react';
 
-const about = () => {
+const About = () => {
   return (
     <div
       className="h-screen flex items-center justify-center"
@@ -29,4 +29,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;

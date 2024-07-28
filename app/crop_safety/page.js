@@ -1,37 +1,72 @@
 "use client";
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import getCurrentData from "@/actions/getCurrentData";
+import getForecastData from "@/actions/getForecastData";
+import Image from "next/image";
 
 const CropSafety = () => {
-  const [city, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const fetchWeather = async (e) => {
-    e.preventDefault();
-    // Mock API call, replace with actual API call
-    const data = {
-      location: 'Sample City',
-      temp: 25,
-      description: 'Sunny',
-      humidity: 60,
-      windSpeed: 10,
-    };
-    setWeatherData(data);
+  const [city, setCity] = useState("");
+  const [weatherData, setWeatherData] = useState(null);
+  const [cropSafety, setCropSafety] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
+  const [safetyStatus, setSafetyStatus] = useState(null);
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await getCurrentData(city);
+      setWeatherData(response);
+
+      const res = await getForecastData(city);
+      setForecastData(res);
+
+      // Check crop safety after forecast data is set
+      const safetyStatus = res.forecast.forecastday.every((day) => {
+        const maxTemp = day.day.maxtemp_c;
+        const minTemp = day.day.mintemp_c;
+        const rainChance = day.day.daily_chance_of_rain;
+
+        return maxTemp < 35 && minTemp > 10 && rainChance < 80;
+      });
+      setSafetyStatus(safetyStatus);
+      setCropSafety(safetyStatus ? "Crops are safe" : "Crops are at risk!!");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
-    <div>
-      <div className="weather-widget bg-gray-100 p-4 rounded-lg shadow-md">
-        <div className="weather-header mb-4">
-          <h2 className="text-lg font-semibold mb-2">Weather's Forecast</h2>
-          <form onSubmit={fetchWeather} className="flex">
+    <>
+      <div
+        className="w-full min-h-78vh flex gap-10 justify-center items-center "
+        style={{
+          backgroundImage: "url('/images/weather_bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="h-72 w-72 bg-gray-100 bg-opacity-30 border-2 border-gray-300 p-4 rounded-lg shadow-md backdrop-filter backdrop-blur-sm">
+          <h2 className="text-lg text-center font-semibold mb-4">
+            Weather's Forecast
+          </h2>
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-10"
+          >
             <input
               type="text"
-              id="city-input"
+              id="city"
+              name="city"
               placeholder="Enter city name"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="px-3 py-2 mr-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <button
               type="submit"
@@ -42,31 +77,64 @@ const CropSafety = () => {
             </button>
           </form>
         </div>
-        <div className="weather-info">
-          {weatherData ? (
-            <>
-              <p className="weather-location text-lg font-semibold mb-2" id="weather-location">
-                {weatherData.location}
-              </p>
-              <p className="weather-temp text-gray-700 mb-2" id="weather-temp">
-                Temperature: {weatherData.temp}°C
-              </p>
-              <p className="weather-desc text-gray-700 mb-2" id="weather-desc">
-                Description: {weatherData.description}
-              </p>
-              <p className="weather-humidity text-gray-700 mb-2" id="weather-humidity">
-                Humidity: {weatherData.humidity}%
-              </p>
-              <p className="weather-wind text-gray-700 mb-2" id="weather-wind">
-                Wind Speed: {weatherData.windSpeed} km/h
-              </p>
-            </>
-          ) : (
-            <p className="text-gray-700">No weather data available.</p>
-          )}
-        </div>
+
+        {weatherData && (
+          <div className="h-72 w-72 p-4 bg-gray-100 bg-opacity-30 border-2 border-gray-300 rounded-lg shadow-md text-center flex justify-center flex-col items-center backdrop-filter backdrop-blur-sm">
+            <div>
+              <Image
+                src={`https:${weatherData.current.condition.icon}`}
+                alt={weatherData.current.condition.text}
+                width={50}
+                height={50}
+              />
+            </div>
+            <p className="text-lg font-semibold mb-2">
+              Location: {weatherData.location.name},{" "}
+              {weatherData.location.region}, {weatherData.location.country}
+            </p>
+            <p className="text-white mb-2">
+              Temperature: {weatherData.current.temp_c}°C
+            </p>
+            <p className="text-white mb-2">
+              Condition: {weatherData.current.condition.text}
+            </p>
+            <p className="text-white mb-2">
+              Humidity: {weatherData.current.humidity}%
+            </p>
+            <p className="text-white mb-2">
+              Wind Speed: {weatherData.current.wind_kph} km/h
+            </p>
+          </div>
+        )}
+
+        {cropSafety && (
+          <div className=" h-72 w-72 p-4 bg-gray-100 bg-opacity-30 border-2 border-gray-300 rounded-lg shadow-md overflow-y-auto text-center backdrop-filter backdrop-blur-lg">
+            <p
+              className={`text-2xl font-semibold mb-2 ${
+                safetyStatus ? "text-green-500" : "text-red-800"
+              }`}
+            >
+              {cropSafety}
+            </p>
+            {forecastData &&
+              forecastData.forecast.forecastday.map((day, index) => (
+                <div key={index} className="mb-4">
+                  <p className="text-lg font-semibold">{day.date}</p>
+                  <p className="text-white">
+                    Max Temp: {day.day.maxtemp_c}°C
+                  </p>
+                  <p className="text-white">
+                    Min Temp: {day.day.mintemp_c}°C
+                  </p>
+                  <p className="text-white">
+                    Chance of Rain: {day.day.daily_chance_of_rain}%
+                  </p>
+                </div>
+              ))}
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

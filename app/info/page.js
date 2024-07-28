@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const Tabs = () => {
+const Info = () => {
   const [activeTab, setActiveTab] = useState("tab1");
 
   const openTab = (tabId) => {
@@ -16,7 +16,7 @@ const Tabs = () => {
   return (
     <div className="container mx-auto py-8 flex">
       {/* Sidebar */}
-      <div className="w-1/5 bg-white shadow-md rounded-lg p-4 mr-8 fixed top-28">
+      <div className="w-1/5 bg-white shadow-md rounded-lg p-4 mr-8 fixed top-24 mt-2 ">
         <h2 className="text-xl font-semibold mb-4">Agenda</h2>
         <div className="flex flex-col">
           {[
@@ -269,4 +269,4 @@ const Tabs = () => {
   );
 };
 
-export default Tabs;
+export default Info;

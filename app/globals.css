@@ -45,6 +45,9 @@
 .min-h-84vh {
   height: 84vh;
 }
+.min-h-78vh{
+  height: 78vh;
+}
 
 .focus\:border-green-550:focus {
     border-color: rgb(0, 255, 0);
