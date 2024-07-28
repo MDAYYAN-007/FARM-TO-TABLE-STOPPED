@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import states from "@/statesndist";
-import getImageLink from "@/actions/getImagelink";
+import getImageLink from "@/actions/getImageLink";
 
 const Sell = () => {
   const { register, handleSubmit, watch, reset, setValue } = useForm({

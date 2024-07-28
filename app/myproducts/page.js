@@ -63,7 +63,7 @@ const ProductsPage = () => {
   return (
     <div className="py-8">
       <h1 className="text-3xl font-bold text-center mb-6">Products Sold by You</h1>
-      <div className="container mx-auto">
+      <div className="mx-auto">
         <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
           <thead>
             <tr className="bg-gray-100">
